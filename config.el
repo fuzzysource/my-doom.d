@@ -100,6 +100,14 @@
   (typescript-mode . lsp)
   )
 
+(use-package! go-mode
+  :config
+  (add-to-list #'lsp-enabled-clients 'gopls)
+  :hook
+  (go-mode . lsp)
+  )
+
+
 (use-package! nginx-mode)
 
 (use-package! apheleia
@@ -114,4 +122,21 @@
    'typescript-formatter
    '("prettier" "--stdin-filepath" filepath)
    :modes '(typescript-mode))
+  )
+
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)))
+
+
+(use-package! python-mode
+  :config
+  (add-to-list #'lsp-enabled-clients 'pyls)
+  :hook
+  (python-mode . lsp)
   )

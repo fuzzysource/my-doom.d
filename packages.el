@@ -50,3 +50,8 @@
 ;; (unpin! t)
 (package! nginx-mode)
 (package! apheleia)
+(package! copilot
+  :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
+
+(package! dockerfile-mode)
+(package! docker-compose-mode)

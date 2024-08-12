@@ -78,7 +78,7 @@
 
 (setq doom-font (font-spec :family "Iosevka" :size 15 :weight 'regular))
 
-(setq doom-theme 'doom-flatwhite)
+(setq doom-theme 'doom-rouge)
 
 (use-package! lsp-mode
   :init
@@ -139,4 +139,24 @@
   (add-to-list #'lsp-enabled-clients 'pyls)
   :hook
   (python-mode . lsp)
+  )
+
+(use-package! origami
+  :config
+  (global-origami-mode)
+  )
+
+(use-package! tree-sitter
+  :config
+  (global-tree-sitter-mode)
+  )
+
+(use-package ts-fold
+  :config
+  (global-ts-fold-mode)
+  :hook
+  (typescript-mode . ts-fold-mode)
+  :bind
+  (("C-'" . ts-fold-toggle)
+   )
   )

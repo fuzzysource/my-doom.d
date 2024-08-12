@@ -55,3 +55,9 @@
 
 (package! dockerfile-mode)
 (package! docker-compose-mode)
+(package! origami)
+(package! ts-fold
+  :recipe (:host github :repo "emacs-tree-sitter/ts-fold" :files ("*.el")))
+
+(package! ts-fold-indicators
+  :recipe (:host github :repo "emacs-tree-sitter/ts-fold"))

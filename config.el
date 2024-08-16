@@ -127,6 +127,9 @@
 ;; accept completion from copilot and fallback to company
 (use-package! copilot
   :hook (prog-mode . copilot-mode)
+  (yaml-mode . copilot-mode)
+  (markdown-mode . copilot-mode)
+  (web-mode . copilot-mode)
   :bind (:map copilot-completion-map
               ("<tab>" . 'copilot-accept-completion)
               ("TAB" . 'copilot-accept-completion)
@@ -159,4 +162,9 @@
   :bind
   (("C-'" . ts-fold-toggle)
    )
+  )
+(use-package yaml-mode
+  :hook
+  (yaml-mode . lsp)
+  (yaml-mode . (lambda () (apheleia-mode -1)))
   )

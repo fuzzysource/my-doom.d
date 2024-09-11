@@ -61,3 +61,5 @@
 
 (package! ts-fold-indicators
   :recipe (:host github :repo "emacs-tree-sitter/ts-fold"))
+
+(package! move-text)

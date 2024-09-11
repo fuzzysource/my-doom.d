@@ -122,6 +122,11 @@
    'typescript-formatter
    '("prettier" "--stdin-filepath" filepath)
    :modes '(typescript-mode))
+  (set-formatter!
+   'clojure-formatter
+   '("cljfmt" "fix" filepath)
+   :modes '(clojure-mode)
+   )
   )
 
 ;; accept completion from copilot and fallback to company
@@ -154,7 +159,7 @@
   (global-tree-sitter-mode)
   )
 
-(use-package ts-fold
+(use-package! ts-fold
   :config
   (global-ts-fold-mode)
   :hook
@@ -163,8 +168,19 @@
   (("C-'" . ts-fold-toggle)
    )
   )
-(use-package yaml-mode
+(use-package! yaml-mode
   :hook
   (yaml-mode . lsp)
   (yaml-mode . (lambda () (apheleia-mode -1)))
+  )
+
+(use-package! projectile
+  :init
+  (setq projectile-indexing-method 'native)
+  (setq projectile-enable-caching nil)
+  )
+
+(use-package! move-text
+  :init
+  (move-text-default-bindings)
   )

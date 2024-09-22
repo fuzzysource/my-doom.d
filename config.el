@@ -110,24 +110,24 @@
 
 (use-package! nginx-mode)
 
-(use-package! apheleia
-  :init
-  (apheleia-global-mode +1)
+;; (use-package! apheleia
+;;   :init
+;;   (apheleia-global-mode +1)
 
-  (map! "<f10>" 'apheleia-format-buffer)
-  :config
+;;   (map! "<f10>" 'apheleia-format-buffer)
+;;   :config
 
-  (set-formatter!
+;;   (set-formatter!
 
-   'typescript-formatter
-   '("prettier" "--stdin-filepath" filepath)
-   :modes '(typescript-mode))
-  (set-formatter!
-   'clojure-formatter
-   '("cljfmt" "fix" filepath)
-   :modes '(clojure-mode)
-   )
-  )
+;;    'typescript-formatter
+;;    '("prettier" "--stdin-filepath" filepath)
+;;    :modes '(typescript-mode))
+;;   (set-formatter!
+;;    'clojure-formatter
+;;    '("cljfmt" "fix" filepath)
+;;    :modes '(clojure-mode)
+;;    )
+;;   )
 
 ;; accept completion from copilot and fallback to company
 (use-package! copilot
@@ -184,3 +184,13 @@
   :init
   (move-text-default-bindings)
   )
+
+(use-package! format-all
+  :commands format-all-mode
+  :hook (prog-mode . format-all-mode)
+  :init
+  (map! "<f10>" 'format-all-buffer)
+  :config
+  (setq-default format-all-formatters
+                '(("C"     (astyle "--mode=c"))
+                  ("Shell" (shfmt "-i" "4" "-ci")))))

@@ -63,3 +63,5 @@
   :recipe (:host github :repo "emacs-tree-sitter/ts-fold"))
 
 (package! move-text)
+
+(package! format-all)

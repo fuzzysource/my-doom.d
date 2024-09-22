@@ -193,4 +193,22 @@
   :config
   (setq-default format-all-formatters
                 '(("C"     (astyle "--mode=c"))
+                  ("Clojure" (zprint) )
                   ("Shell" (shfmt "-i" "4" "-ci")))))
+
+(use-package! json-mode
+  :init
+  (setq js-indent-level 2)
+  )
+
+(use-package! web-mode
+  :init
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  )
+
+(use-package! typescript-mode
+  :init
+  (setq typescript-indent-level 2)
+  )

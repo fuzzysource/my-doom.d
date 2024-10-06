@@ -65,3 +65,4 @@
 (package! move-text)
 
 (package! format-all)
+(package! emmet-mode)

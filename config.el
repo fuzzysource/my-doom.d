@@ -176,7 +176,7 @@
 
 (use-package! projectile
   :init
-  (setq projectile-indexing-method 'native)
+  (setq projectile-indexing-method 'alien)
   (setq projectile-enable-caching nil)
   )
 
@@ -193,8 +193,24 @@
   :config
   (setq-default format-all-formatters
                 '(("C"     (astyle "--mode=c"))
-                  ("Clojure" (zprint) )
-                  ("Shell" (shfmt "-i" "4" "-ci")))))
+                  ;; setup clojure formatter
+                  ;; if os is macos then use zprintma otherwise use zprint
+                  ("Clojure" (zprint))
+                  ("Shell" (shfmt "-i" "4" "-ci"))
+                  ("Typescript" (prettier))
+                  ("TSX" (prettier))
+                  ("JSX" (prettier))
+                  ("JSON" (prettier))
+                  ("YAML" (prettier))
+                  ("Markdown" (prettier))
+                  ("HTML" (prettier))
+                  ("CSS" (prettier))
+                  ("JavaScript" (prettier))
+                  ("Python" (yapf))
+                  ("Go" (gofmt))
+                  ("Java" (google-java-format))
+                  ("SQL" (sqlformat))
+                  )))
 
 (use-package! json-mode
   :init
@@ -211,4 +227,19 @@
 (use-package! typescript-mode
   :init
   (setq typescript-indent-level 2)
+  )
+
+(use-package! clojure-mode
+  :init
+  (add-to-list #'lsp-enabled-clients 'clojure-lsp)
+  (lsp-deferred)
+  )
+
+(use-package! emmet-mode
+  :hook
+  (web-mode . emmet-mode)
+  (html-mode . emmet-mode)
+  (css-mode . emmet-mode)
+  (typescript-mode . emmet-mode)
+  (emmet-mode . emmet-preview-mode)
   )

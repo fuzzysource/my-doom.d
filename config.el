@@ -78,7 +78,7 @@
 
 (setq doom-font (font-spec :family "Iosevka" :size 15 :weight 'regular))
 
-(setq doom-theme 'doom-rouge)
+(setq doom-theme 'doom-opera-light)
 
 (use-package! lsp-mode
   :init
@@ -203,7 +203,6 @@
                   ("JSON" (prettier))
                   ("YAML" (prettier))
                   ("Markdown" (prettier))
-                  ("HTML" (prettier))
                   ("CSS" (prettier))
                   ("JavaScript" (prettier))
                   ("Python" (yapf))
@@ -235,11 +234,11 @@
   (lsp-deferred)
   )
 
-(use-package! emmet-mode
-  :hook
-  (web-mode . emmet-mode)
-  (html-mode . emmet-mode)
-  (css-mode . emmet-mode)
-  (typescript-mode . emmet-mode)
-  (emmet-mode . emmet-preview-mode)
-  )
+;; (use-package! emmet-mode
+;;   :hook
+;;   (web-mode . emmet-mode)
+;;   (html-mode . emmet-mode)
+;;   (css-mode . emmet-mode)
+;;   (typescript-mode . emmet-mode)
+;;   (emmet-mode . emmet-preview-mode)
+;;   )

@@ -130,16 +130,16 @@
 ;;   )
 
 ;; accept completion from copilot and fallback to company
-(use-package! copilot
-  :hook (prog-mode . copilot-mode)
-  (yaml-mode . copilot-mode)
-  (markdown-mode . copilot-mode)
-  (web-mode . copilot-mode)
-  :bind (:map copilot-completion-map
-              ("<tab>" . 'copilot-accept-completion)
-              ("TAB" . 'copilot-accept-completion)
-              ("C-TAB" . 'copilot-accept-completion-by-word)
-              ("C-<tab>" . 'copilot-accept-completion-by-word)))
+;; (use-package! copilot       
+;;   :hook (prog-mode . copilot-mode)
+;;   (yaml-mode . copilot-mode)
+;;   (markdown-mode . copilot-mode)
+;;   (web-mode . copilot-mode)
+;;   :bind (:map copilot-completion-map
+;;               ("<tab>" . 'copilot-accept-completion)
+;;               ("TAB" . 'copilot-accept-completion)
+;;               ("C-TAB" . 'copilot-accept-completion-by-word)
+;;               ("C-<tab>" . 'copilot-accept-completion-by-word)))
 
 
 (use-package! python-mode
@@ -195,7 +195,7 @@
                 '(("C"     (astyle "--mode=c"))
                   ;; setup clojure formatter
                   ;; if os is macos then use zprintma otherwise use zprint
-                  ("Clojure" (zprint))
+                  ("Clojure" (cljfmt))
                   ("Shell" (shfmt "-i" "4" "-ci"))
                   ("Typescript" (prettier))
                   ("TSX" (prettier))
@@ -208,7 +208,6 @@
                   ("Python" (yapf))
                   ("Go" (gofmt))
                   ("Java" (google-java-format))
-                  ("SQL" (sqlformat))
                   )))
 
 (use-package! json-mode
@@ -228,12 +227,22 @@
   (setq typescript-indent-level 2)
   )
 
+(use-package! flycheck-clj-kondo
+
+  )
+
 (use-package! clojure-mode
   :init
   (add-to-list #'lsp-enabled-clients 'clojure-lsp)
   (lsp-deferred)
+  :config
+  (require 'flycheck-clj-kondo)
   )
 
+(use-package! lsp-treemacs
+  :init
+  (lsp-treemacs-sync-mode 1)
+  )
 ;; (use-package! emmet-mode
 ;;   :hook
 ;;   (web-mode . emmet-mode)

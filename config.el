@@ -78,7 +78,7 @@
 
 (setq doom-font (font-spec :family "Iosevka" :size 15 :weight 'regular))
 
-(setq doom-theme 'doom-opera-light)
+(setq doom-theme 'doom-challenger-deep)
 
 (use-package! lsp-mode
   :init
@@ -130,7 +130,7 @@
 ;;   )
 
 ;; accept completion from copilot and fallback to company
-;; (use-package! copilot       
+;; (use-package! copilot
 ;;   :hook (prog-mode . copilot-mode)
 ;;   (yaml-mode . copilot-mode)
 ;;   (markdown-mode . copilot-mode)
@@ -193,10 +193,8 @@
   :config
   (setq-default format-all-formatters
                 '(("C"     (astyle "--mode=c"))
-                  ;; setup clojure formatter
-                  ;; if os is macos then use zprintma otherwise use zprint
-                  ("Clojure" (cljfmt))
                   ("Shell" (shfmt "-i" "4" "-ci"))
+                  ("Clojure" (zprint))
                   ("Typescript" (prettier))
                   ("TSX" (prettier))
                   ("JSX" (prettier))

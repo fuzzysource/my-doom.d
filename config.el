@@ -249,3 +249,10 @@
 ;;   (typescript-mode . emmet-mode)
 ;;   (emmet-mode . emmet-preview-mode)
 ;;   )
+
+
+(use-package! yaml-mode
+  :init
+  (add-to-list #'lsp-enabled-clients 'yamlls)
+  (lsp-deferred)
+  )

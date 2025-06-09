@@ -80,11 +80,6 @@
 
 (setq doom-theme 'doom-challenger-deep)
 
-(use-package! lsp-mode
-  :init
-  (message "Hello world. It's me, lsp-mode")
-  ;; :hook
-  )
 
 (use-package! smartparens-mode
   :ensure smartparens  ;; install the package
@@ -94,17 +89,9 @@
   (require 'smartparens-config))
 
 (use-package! typescript-mode
-  :config
-  (add-to-list #'lsp-enabled-clients 'ts-ls)
-  :hook
-  (typescript-mode . lsp)
   )
 
 (use-package! go-mode
-  :config
-  (add-to-list #'lsp-enabled-clients 'gopls)
-  :hook
-  (go-mode . lsp)
   )
 
 
@@ -143,10 +130,6 @@
 
 
 (use-package! python-mode
-  :config
-  (add-to-list #'lsp-enabled-clients 'pyls)
-  :hook
-  (python-mode . lsp)
   )
 
 (use-package! origami
@@ -170,7 +153,6 @@
   )
 (use-package! yaml-mode
   :hook
-  (yaml-mode . lsp)
   (yaml-mode . (lambda () (apheleia-mode -1)))
   )
 
@@ -230,17 +212,14 @@
   )
 
 (use-package! clojure-mode
-  :init
-  (add-to-list #'lsp-enabled-clients 'clojure-lsp)
-  (lsp-deferred)
   :config
   (require 'flycheck-clj-kondo)
   )
 
-(use-package! lsp-treemacs
-  :init
-  (lsp-treemacs-sync-mode 1)
-  )
+;; (use-package! lsp-treemacs
+;;   :init
+;;   ;; (lsp-treemacs-sync-mode 1)
+;;   )
 ;; (use-package! emmet-mode
 ;;   :hook
 ;;   (web-mode . emmet-mode)
@@ -250,9 +229,11 @@
 ;;   (emmet-mode . emmet-preview-mode)
 ;;   )
 
-
 (use-package! yaml-mode
-  :init
-  (add-to-list #'lsp-enabled-clients 'yamlls)
-  (lsp-deferred)
   )
+
+(use-package! lsp-bridge
+  :config
+  (global-lsp-bridge-mode))
+
+(setq insert-default-directory nil)

@@ -236,4 +236,4 @@
   :config
   (global-lsp-bridge-mode))
 
-(setq insert-default-directory nil)
+;; (setq insert-default-directory nil)

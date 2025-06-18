@@ -214,6 +214,7 @@
 (use-package! clojure-mode
   :config
   (require 'flycheck-clj-kondo)
+  (lsp-deferred)
   )
 
 ;; (use-package! lsp-treemacs
@@ -232,8 +233,8 @@
 (use-package! yaml-mode
   )
 
-(use-package! lsp-bridge
-  :config
-  (global-lsp-bridge-mode))
+;; (use-package! lsp-bridge
+;;   :config
+;;   (global-lsp-bridge-mode))
 
 ;; (setq insert-default-directory nil)

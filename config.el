@@ -214,7 +214,6 @@
 (use-package! clojure-mode
   :config
   (require 'flycheck-clj-kondo)
-  (lsp-deferred)
   )
 
 ;; (use-package! lsp-treemacs

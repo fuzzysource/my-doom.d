@@ -76,9 +76,9 @@
 ;; they are implemented.
 
 
-(setq doom-font (font-spec :family "Fantasque Sans Mono" :size 15 :weight 'regular))
+(setq doom-font (font-spec :family "Iosevka" :size 15 :weight 'regular))
 
-(setq doom-theme 'doom-challenger-deep)
+(setq doom-theme 'doom-ayu-dark)
 
 
 (use-package! smartparens-mode

@@ -78,7 +78,7 @@
 
 (setq doom-font (font-spec :family "Iosevka" :size 15 :weight 'regular))
 
-(setq doom-theme 'doom-ayu-dark)
+(setq doom-theme 'doom-earl-grey)
 
 
 (use-package! smartparens-mode

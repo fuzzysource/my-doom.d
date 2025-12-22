@@ -129,9 +129,6 @@
 ;;               ("C-<tab>" . 'copilot-accept-completion-by-word)))
 
 
-(use-package! python-mode
-  )
-
 (use-package! origami
   :config
   (global-origami-mode)
@@ -237,3 +234,24 @@
 ;;   (global-lsp-bridge-mode))
 
 ;; (setq insert-default-directory nil)
+
+(use-package! lsp-mode
+  :hook ((clojure-mode . lsp)
+         (clojurec-mode . lsp)
+         (clojurescript-mode . lsp))
+  :config
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection '("clojure-lsp"))
+                    :major-modes '(clojure-mode
+                                   clojurec-mode
+                                   clojurescript-mode
+                                   clojurex-mode)
+                    :server-id 'my-clojure-lsp))
+  )
+
+(use-package pipenv
+  :hook (python-mode . pipenv-mode)
+  :init
+  (setq
+   pipenv-projectile-after-switch-function
+   #'pipenv-projectile-after-switch-extended))

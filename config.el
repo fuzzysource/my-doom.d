@@ -88,46 +88,12 @@
   ;; load default config
   (require 'smartparens-config))
 
-(use-package! typescript-mode
-  )
+(use-package! typescript-mode)
 
-(use-package! go-mode
-  )
+(use-package! go-mode)
 
 
 (use-package! nginx-mode)
-
-;; (use-package! apheleia
-;;   :init
-;;   (apheleia-global-mode +1)
-
-;;   (map! "<f10>" 'apheleia-format-buffer)
-;;   :config
-
-;;   (set-formatter!
-
-;;    'typescript-formatter
-;;    '("prettier" "--stdin-filepath" filepath)
-;;    :modes '(typescript-mode))
-;;   (set-formatter!
-;;    'clojure-formatter
-;;    '("cljfmt" "fix" filepath)
-;;    :modes '(clojure-mode)
-;;    )
-;;   )
-
-;; accept completion from copilot and fallback to company
-;; (use-package! copilot
-;;   :hook (prog-mode . copilot-mode)
-;;   (yaml-mode . copilot-mode)
-;;   (markdown-mode . copilot-mode)
-;;   (web-mode . copilot-mode)
-;;   :bind (:map copilot-completion-map
-;;               ("<tab>" . 'copilot-accept-completion)
-;;               ("TAB" . 'copilot-accept-completion)
-;;               ("C-TAB" . 'copilot-accept-completion-by-word)
-;;               ("C-<tab>" . 'copilot-accept-completion-by-word)))
-
 
 (use-package! origami
   :config
@@ -213,33 +179,15 @@
   (require 'flycheck-clj-kondo)
   )
 
-;; (use-package! lsp-treemacs
-;;   :init
-;;   ;; (lsp-treemacs-sync-mode 1)
-;;   )
-;; (use-package! emmet-mode
-;;   :hook
-;;   (web-mode . emmet-mode)
-;;   (html-mode . emmet-mode)
-;;   (css-mode . emmet-mode)
-;;   (typescript-mode . emmet-mode)
-;;   (emmet-mode . emmet-preview-mode)
-;;   )
 
-(use-package! yaml-mode
-  )
-
-;; (use-package! lsp-bridge
-;;   :config
-;;   (global-lsp-bridge-mode))
-
-;; (setq insert-default-directory nil)
+(use-package! yaml-mode  )
 
 (use-package! lsp-mode
   :hook ((clojure-mode . lsp)
          (clojurec-mode . lsp)
          (clojurescript-mode . lsp))
   :config
+  (setq lsp-enable-snippet nil)
   (lsp-register-client
    (make-lsp-client :new-connection (lsp-stdio-connection '("clojure-lsp"))
                     :major-modes '(clojure-mode

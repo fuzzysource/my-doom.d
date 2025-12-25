@@ -50,8 +50,8 @@
 ;; (unpin! t)
 (package! nginx-mode)
 (package! apheleia)
-;(package! copilot
-;  :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
+                                        ;(package! copilot
+                                        ;  :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
 
 (package! dockerfile-mode)
 (package! docker-compose-mode)
@@ -68,15 +68,16 @@
 (package! emmet-mode)
 (package! lsp-treemacs)
 
-(when (package! lsp-bridge
-        :recipe (:host github
-                 :repo "manateelazycat/lsp-bridge"
-                 :branch "master"
-                 :files ("*.el" "*.py" "acm" "core" "langserver" "multiserver" "resources")
-                 ;; do not perform byte compilation or native compilation for lsp-bridge
-                 :build (:not compile)))
-  (package! markdown-mode)
-  (package! yasnippet))
+(package! lsp-bridge
+  :recipe (:host github
+           :repo "manateelazycat/lsp-bridge"
+           :branch "master"
+           :files ("*.el" "*.py" "acm" "core" "langserver" "multiserver" "resources")
+           ;; do not perform byte compilation or native compilation for lsp-bridge
+           :build (:not compile)))
+
+(package! markdown-mode)
+
 
 (package! cider)
 (package! python-mode)

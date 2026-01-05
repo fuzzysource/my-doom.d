@@ -203,3 +203,5 @@
   (setq
    pipenv-projectile-after-switch-function
    #'pipenv-projectile-after-switch-extended))
+
+(setq tramp-default-method "ssh")

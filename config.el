@@ -213,7 +213,8 @@
   (([f3] . switch-to-buffer))
   )
 
-
 (use-package! treemacs
   :bind
   (([f8] . treemacs)))
+
+(setq tramp-default-method "ssh")

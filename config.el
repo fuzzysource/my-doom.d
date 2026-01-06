@@ -197,9 +197,23 @@
                     :server-id 'my-clojure-lsp))
   )
 
-(use-package pipenv
+(use-package! pipenv
   :hook (python-mode . pipenv-mode)
   :init
   (setq
    pipenv-projectile-after-switch-function
    #'pipenv-projectile-after-switch-extended))
+
+(use-package! imenu-list
+  :bind
+  (([f6] . imenu-list)))
+
+(use-package! ibuffer
+  :bind
+  (([f3] . switch-to-buffer))
+  )
+
+
+(use-package! treemacs
+  :bind
+  (([f8] . treemacs)))

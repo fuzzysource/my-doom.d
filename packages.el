@@ -82,3 +82,4 @@
 (package! cider)
 (package! python-mode)
 (package! pipenv)
+(package! imenu-list)

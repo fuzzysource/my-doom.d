@@ -76,19 +76,21 @@
 ;; they are implemented.
 
 
-(setq doom-font (font-spec :family "Iosevka" :size 15 :weight 'regular))
+(setq doom-font (font-spec :family "Monaspace Argon Frozen"
+                           :size 15
+                           ;;:weight 'regular
+                           ))
 
-(setq doom-theme 'doom-earl-grey)
-
+(setq doom-theme 'doom-henna)	     
 
 (use-package! smartparens-mode
   :ensure smartparens  ;; install the package
   :hook (prog-mode text-mode markdown-mode typescript-mode) ;; add `smartparens-mode` to these hooks
   :config
-  ;; load default config
+  ;; load default conFig
   (require 'smartparens-config))
 
-(use-package! typescript-mode)
+    ;; (use-package! typescript-mode)
 
 (use-package! go-mode)
 
@@ -216,5 +218,8 @@
 (use-package! treemacs
   :bind
   (([f8] . treemacs)))
+
+(use-package! nix-mode
+  :mode "\\.nix\\'")
 
 (setq tramp-default-method "ssh")

@@ -83,3 +83,6 @@
 (package! python-mode)
 (package! pipenv)
 (package! imenu-list)
+(package! nix-mode
+  :recipe (:host github
+           :repo "nixos/nix-mode"))

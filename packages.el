@@ -86,3 +86,5 @@
 (package! nix-mode
   :recipe (:host github
            :repo "nixos/nix-mode"))
+
+(package! multiple-cursors)

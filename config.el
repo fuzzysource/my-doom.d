@@ -81,7 +81,7 @@
                            ;;:weight 'regular
                            ))
 
-(setq doom-theme 'doom-henna)	     
+(setq doom-theme 'doom-henna)
 
 (use-package! smartparens-mode
   :ensure smartparens  ;; install the package
@@ -90,7 +90,7 @@
   ;; load default conFig
   (require 'smartparens-config))
 
-    ;; (use-package! typescript-mode)
+;; (use-package! typescript-mode)
 
 (use-package! go-mode)
 
@@ -190,13 +190,18 @@
          (clojurescript-mode . lsp))
   :config
   (setq lsp-enable-snippet nil)
-  (lsp-register-client
-   (make-lsp-client :new-connection (lsp-stdio-connection '("clojure-lsp"))
-                    :major-modes '(clojure-mode
-                                   clojurec-mode
-                                   clojurescript-mode
-                                   clojurex-mode)
-                    :server-id 'my-clojure-lsp))
+  ;; (lsp-register-client
+  ;;  (make-lsp-client :new-connection (lsp-stdio-connection "nixd")
+  ;;                   :major-modes '(nix-mode)
+  ;;                   :priority 0
+  ;;                   :server-id 'nixd))
+  ;; (lsp-register-client
+  ;;  (make-lsp-client :new-connection (lsp-stdio-connection '("clojure-lsp"))
+  ;;                   :major-modes '(clojure-mode
+  ;;                                  clojurec-mode
+  ;;                                  clojurescript-mode
+  ;;                                  clojurex-mode)
+  ;;                   :server-id 'my-clojure-lsp))
   )
 
 (use-package! pipenv

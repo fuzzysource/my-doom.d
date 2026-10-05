@@ -83,39 +83,6 @@
 
 (setq doom-theme 'doom-henna)
 
-(use-package! smartparens-mode
-  :ensure smartparens  ;; install the package
-  :hook (prog-mode text-mode markdown-mode typescript-mode) ;; add `smartparens-mode` to these hooks
-  :config
-  ;; load default conFig
-  (require 'smartparens-config))
-
-;; (use-package! typescript-mode)
-
-(use-package! go-mode)
-
-
-(use-package! nginx-mode)
-
-(use-package! origami
-  :config
-  (global-origami-mode)
-  )
-
-;; (use-package! tree-sitter
-;;   :config
-;;   (global-tree-sitter-mode)
-;;   )
-
-(use-package! ts-fold
-  :config
-  (global-ts-fold-mode)
-  :hook
-  (typescript-mode . ts-fold-mode)
-  :bind
-  (("C-'" . ts-fold-toggle)
-   )
-  )
 (use-package! yaml-mode
   :hook
   (yaml-mode . (lambda () (apheleia-mode -1)))
@@ -132,28 +99,30 @@
   (move-text-default-bindings)
   )
 
-(use-package! format-all
-  :commands format-all-mode
-  :hook (prog-mode . format-all-mode)
-  :init
-  (map! "<f10>" 'format-all-buffer)
-  :config
-  (setq-default format-all-formatters
-                '(("C"     (astyle "--mode=c"))
-                  ("Shell" (shfmt "-i" "4" "-ci"))
-                  ("Clojure" (zprint))
-                  ("Typescript" (prettier))
-                  ("TSX" (prettier))
-                  ("JSX" (prettier))
-                  ("JSON" (prettier))
-                  ("YAML" (prettier))
-                  ("Markdown" (prettier))
-                  ("CSS" (prettier))
-                  ("JavaScript" (prettier))
-                  ("Python" (yapf))
-                  ("Go" (gofmt))
-                  ("Java" (google-java-format))
-                  )))
+;; (use-package! format-all
+;;   :commands format-all-mode
+;;   :hook (prog-mode . format-all-mode)
+;;   :init
+;;   (map! "<f10>" 'format-all-buffer)
+;;   :config
+;;   (setq-default format-all-formatters
+;;                 '(("C"     (astyle "--mode=c"))
+;;                   ("Shell" (shfmt "-i" "4" "-ci"))
+;;                   ("Clojure" (zprint))
+;;                   ("Typescript" (prettier))
+;;                   ("TSX" (prettier))
+;;                   ("JSX" (prettier))
+;;                   ("JSON" (prettier))
+;;                   ("YAML" (prettier))
+;;                   ("Markdown" (prettier))
+;;                   ("CSS" (prettier))
+;;                   ("JavaScript" (prettier))
+;;                   ("Python" (yapf))
+;;                   ("Go" (gofmt))
+;;                   ("Java" (google-java-format))
+;;                   )))
+(use-package! apheleia
+  :bind ([f10] . 'apheleia-format-buffer))
 
 (use-package! json-mode
   :init
@@ -165,43 +134,6 @@
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-code-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
-  )
-
-(use-package! typescript-mode
-  :init
-  (setq typescript-indent-level 2)
-  )
-
-(use-package! flycheck-clj-kondo
-
-  )
-
-(use-package! clojure-mode
-  :config
-  (require 'flycheck-clj-kondo)
-  )
-
-
-(use-package! yaml-mode  )
-
-(use-package! lsp-mode
-  :hook ((clojure-mode . lsp)
-         (clojurec-mode . lsp)
-         (clojurescript-mode . lsp))
-  :config
-  (setq lsp-enable-snippet nil)
-  ;; (lsp-register-client
-  ;;  (make-lsp-client :new-connection (lsp-stdio-connection "nixd")
-  ;;                   :major-modes '(nix-mode)
-  ;;                   :priority 0
-  ;;                   :server-id 'nixd))
-  ;; (lsp-register-client
-  ;;  (make-lsp-client :new-connection (lsp-stdio-connection '("clojure-lsp"))
-  ;;                   :major-modes '(clojure-mode
-  ;;                                  clojurec-mode
-  ;;                                  clojurescript-mode
-  ;;                                  clojurex-mode)
-  ;;                   :server-id 'my-clojure-lsp))
   )
 
 (use-package! pipenv
@@ -223,8 +155,5 @@
 (use-package! treemacs
   :bind
   (([f8] . treemacs)))
-
-(use-package! nix-mode
-  :mode "\\.nix\\'")
 
 (setq tramp-default-method "ssh")

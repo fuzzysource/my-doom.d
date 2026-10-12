@@ -157,3 +157,7 @@
   (([f8] . treemacs)))
 
 (setq tramp-default-method "ssh")
+
+;; Display the indicator fill column guideline at column 120
+(setq-default fill-column 120)
+(global-display-fill-column-indicator-mode 1)

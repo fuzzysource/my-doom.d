@@ -161,3 +161,6 @@
 ;; Display the indicator fill column guideline at column 120
 (setq-default fill-column 120)
 (global-display-fill-column-indicator-mode 1)
+
+
+(use-package! caddyfile-mode)

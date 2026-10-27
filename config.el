@@ -167,3 +167,6 @@
 
 
 (use-package! caddyfile-mode)
+
+;; Prevent dire mode creating new buffer per navigation.
+(setq dired-kill-when-opening-new-dired-buffer t)

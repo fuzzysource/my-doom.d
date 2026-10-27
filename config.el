@@ -122,7 +122,10 @@
 ;;                   ("Java" (google-java-format))
 ;;                   )))
 (use-package! apheleia
-  :bind ([f10] . 'apheleia-format-buffer))
+  :bind ([f10] . 'apheleia-format-buffer)
+  :config
+  (setq apheleia-remote-algorithm 'remote)
+  )
 
 (use-package! json-mode
   :init

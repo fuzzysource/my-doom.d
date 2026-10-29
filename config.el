@@ -123,8 +123,14 @@
 ;;                   )))
 (use-package! apheleia
   :bind ([f10] . 'apheleia-format-buffer)
+  :init 
+  (apheleia-global-mode +1)
   :config
   (setq apheleia-remote-algorithm 'remote)
+  (setf (alist-get 'caddy-fmt apheleia-formatters)
+        '("caddy" "fmt" "-"))
+  (setf (alist-get 'caddyfile-mode apheleia-mode-alist)
+        'caddy-fmt)
   )
 
 (use-package! json-mode
@@ -166,7 +172,8 @@
 (global-display-fill-column-indicator-mode 1)
 
 
-(use-package! caddyfile-mode)
+(use-package! caddyfile-mode
+  )
 
 ;; Prevent dire mode creating new buffer per navigation.
 (setq dired-kill-when-opening-new-dired-buffer t)

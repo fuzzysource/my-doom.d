@@ -178,12 +178,20 @@
 ;; Prevent dire mode creating new buffer per navigation.
 (setq dired-kill-when-opening-new-dired-buffer t)
 
+(use-package! lsp-ui
+  :config
+  (setq lsp-ui-imenu-auto-refresh t))
 
 (use-package! lsp-mode
+  :hook (lsp-mode . lsp-ui-imenu)
+  (lsp-ui-imenu)
   :config
+  (add-to-list 'lsp-disabled-clients 'semgrep-ls)
   (add-to-list 'lsp-language-id-configuration '(php-mode . "php"))
   (lsp-register-client (make-lsp-client
                         :new-connection (lsp-stdio-connection "phpantom_lsp")
                         :activation-fn (lsp-activate-on "php")
                         :server-id 'phpantom_lsp))
   )
+
+

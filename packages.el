@@ -50,3 +50,7 @@
 ;; (unpin! t)
 (package! move-text)
 (package! caddyfile-mode)
+(package! just-ts-mode)
+(package! treesit-langs
+  :recipe (:host github
+           :repo "emacs-tree-sitter/treesit-langs"))

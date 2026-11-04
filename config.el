@@ -194,4 +194,6 @@
                         :server-id 'phpantom_lsp))
   )
 
-
+(use-package! treesit-langs
+  :config
+  (treesit-langs-major-mode-setup))

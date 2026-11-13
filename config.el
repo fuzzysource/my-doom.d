@@ -186,11 +186,6 @@
   :hook (lsp-mode . lsp-ui-imenu)
   (lsp-ui-imenu)
   :config
-  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.git\\'")
-  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]node_modules\\'")
-  (add-to-list 'lsp-file-watch-ignored "[/\\\\]\\.git\\'")
-  (add-to-list 'lsp-file-watch-ignored "[/\\\\]node_modules\\'")
-  
   (add-to-list 'lsp-disabled-clients 'semgrep-ls)
   (add-to-list 'lsp-language-id-configuration '(php-mode . "php"))
   (lsp-register-client (make-lsp-client
